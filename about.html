@@ -69,6 +69,26 @@
     <a class="btn" href="education.html">Next: Educational Attainment</a>
   </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
+  <script>
+    /* About page: shrink the text just enough that it always fits the screen (no scrolling) */
+    (function () {
+      var sheet = document.querySelector('.sheet');
+      var root = document.documentElement;
+      if (!sheet) return;
+      function fit() {
+        var f = 1;
+        root.style.setProperty('--fit', f);
+        while (sheet.scrollHeight > sheet.clientHeight + 1 && f > 0.4) {
+          f = Math.round((f - 0.03) * 100) / 100;
+          root.style.setProperty('--fit', f);
+        }
+      }
+      fit();
+      window.addEventListener('resize', fit);
+      window.addEventListener('load', fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    })();
+  </script>
 </body>
 </html>
