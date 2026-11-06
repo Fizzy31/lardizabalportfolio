@@ -409,16 +409,26 @@ h1 {
 
 .about {
   flex: 1;
+  min-height: 0;
+  display: flex;
   width: 100%;
-  max-width: 1040px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: clamp(28px, 5vw, 64px) clamp(16px, 4vw, 48px);
+  padding: clamp(12px, 2.5vh, 40px) clamp(12px, 4vw, 48px);
 }
+
+/* Fit the About page in one screen: the page itself never scrolls */
+body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden; }
 
 /* Sheet border: outer frame plus a thin inner frame, like a drawing sheet */
 .sheet {
   position: relative;
-  padding: clamp(32px, 6vw, 80px) clamp(24px, 6vw, 88px);
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* safety net only: used when a very small screen can't fit the text */
+  padding: clamp(18px, 4vh, 64px) clamp(18px, 5vw, 88px);
   border: 1px solid var(--accent);
   background: color-mix(in srgb, var(--bg) 80%, transparent);
 }
@@ -431,34 +441,49 @@ h1 {
 }
 
 .about h1 {
-  margin: 0 0 clamp(24px, 4vw, 44px);
+  margin: auto 0 clamp(12px, 3vh, 36px);
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2.4vh, 1.25rem);
   letter-spacing: -0.01em;
   color: var(--muted);
 }
 
+.about-text { display: grid; gap: clamp(16px, 3vh, 40px); margin-bottom: auto; }
+
 .about-lead {
-  position: relative;
-  margin: 0 0 clamp(32px, 5vw, 56px);
+  margin: 0;
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: clamp(1.6rem, 3.8vw, 2.8rem);
+  font-size: clamp(1.1rem, min(2.8vw, 3.9vh), 2.3rem);
   line-height: 1.55;
   letter-spacing: -0.02em;
   text-wrap: pretty;
 }
 
-/* Smaller notes sit to the right, like notes on a drawing */
+/* Smaller notes sit beside the intro, like notes on a drawing */
 .about-body {
   display: grid;
-  gap: 1.1em;
-  max-width: 60ch;
-  margin-left: auto;
+  gap: 0.9em;
+  align-content: start;
 }
-.about-body p { margin: 0; color: var(--muted); font-size: 1.125rem; line-height: 1.7; }
+.about-body p { margin: 0; color: var(--muted); font-size: clamp(0.85rem, 2.1vh, 1.05rem); line-height: 1.6; }
 .about-body .dim { color: var(--ink); }
+
+@media (max-width: 899px) {
+  .sheet { padding: clamp(16px, 3vh, 32px) 20px; }
+  .about h1 { margin-bottom: 10px; }
+  .about-text { gap: 14px; }
+  .about-lead { font-size: clamp(0.95rem, min(4.4vw, 2.6vh), 1.7rem); line-height: 1.5; }
+  .about-body { gap: 0.7em; }
+  .about-body p { font-size: clamp(0.78rem, min(3.4vw, 1.9vh), 1rem); line-height: 1.5; }
+  .site-footer { padding-block: 10px; }
+  .site-footer .btn { padding: 9px 18px; font-size: 0.9rem; }
+}
+
+@media (min-width: 900px) {
+  .about-text { grid-template-columns: 1.3fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+}
 
 /* Dimension line: end ticks plus a line that draws in under key phrases */
 .dim {
@@ -474,10 +499,6 @@ h1 {
   animation-delay: calc(0.4s + var(--i, 0) * 0.3s);
 }
 @keyframes draw { from { --draw: 0%; } to { --draw: 100%; } }
-
-@media (max-width: 700px) {
-  .about-body { margin-left: 0; }
-}
 
 /* ---------- Footer ---------- */
 .site-footer {
