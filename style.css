@@ -412,7 +412,7 @@ h1 {
   min-height: 0;
   display: flex;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: clamp(12px, 2.5vh, 40px) clamp(12px, 4vw, 48px);
 }
@@ -428,7 +428,7 @@ body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: clamp(18px, 4vh, 64px) clamp(18px, 5vw, 88px);
+  padding: clamp(18px, 3.5vh, 56px) clamp(18px, 4.5vw, 72px);
   border: 1px solid var(--accent);
   background: color-mix(in srgb, var(--bg) 80%, transparent);
 }
@@ -455,7 +455,7 @@ body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden
   margin: 0;
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: calc(clamp(1.1rem, min(2.5vw, 3.5vh), 2.1rem) * var(--fit, 1));
+  font-size: calc(clamp(1.1rem, min(2.6vw, 4.2vh), 2.4rem) * var(--fit, 1));
   line-height: 1.55;
   letter-spacing: -0.02em;
   text-wrap: pretty;
@@ -467,22 +467,22 @@ body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden
   gap: 0.9em;
   align-content: start;
 }
-.about-body p { margin: 0; color: var(--muted); font-size: calc(clamp(0.95rem, 2.8vh, 1.35rem) * var(--fit, 1)); line-height: 1.6; }
+.about-body p { margin: 0; color: var(--muted); font-size: calc(clamp(1rem, 3.3vh, 1.8rem) * var(--fit, 1)); line-height: 1.5; }
 .about-body .dim { color: var(--ink); }
 
 @media (max-width: 899px) {
   .sheet { padding: clamp(16px, 3vh, 32px) 20px; }
   .about h1 { margin-bottom: 10px; }
   .about-text { gap: 14px; }
-  .about-lead { font-size: calc(clamp(0.95rem, min(4.4vw, 2.6vh), 1.7rem) * var(--fit, 1)); line-height: 1.5; }
+  .about-lead { font-size: calc(clamp(0.95rem, min(4.6vw, 2.9vh), 1.6rem) * var(--fit, 1)); line-height: 1.5; }
   .about-body { gap: 0.7em; }
-  .about-body p { font-size: calc(clamp(0.85rem, min(3.9vw, 2.3vh), 1.1rem) * var(--fit, 1)); line-height: 1.5; }
+  .about-body p { font-size: calc(clamp(0.95rem, min(4.6vw, 2.9vh), 1.3rem) * var(--fit, 1)); line-height: 1.5; }
   .site-footer { padding-block: 10px; }
   .site-footer .btn { padding: 9px 18px; font-size: 0.9rem; }
 }
 
 @media (min-width: 900px) {
-  .about-text { grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  .about-text { grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 }
 
 /* Dimension line: end ticks plus a line that draws in under key phrases */
