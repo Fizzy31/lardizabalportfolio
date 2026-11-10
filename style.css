@@ -792,7 +792,9 @@ body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden
 /* =====================================================================
    Home page: fits one screen, the page itself never scrolls
    ===================================================================== */
-body.home-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden; }
+html:has(body.home-page) { overflow: hidden; height: 100%; }
+/* Pinned to the viewport so nothing can make the page taller than the screen */
+body.home-page { position: fixed; inset: 0; height: auto; min-height: 0; overflow: hidden; }
 
 body.home-page .hero {
   min-height: 0;
