@@ -716,10 +716,11 @@ body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden
   min-height: 0;
   display: grid;
   grid-template-columns: minmax(170px, 250px) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   gap: clamp(16px, 3vw, 40px);
 }
 
-.ach-nav { display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+.ach-nav { display: flex; flex-direction: column; justify-content: center; align-self: center; gap: 8px; }
 .ach-tab {
   display: grid;
   gap: 2px;
@@ -742,7 +743,7 @@ body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden
   box-shadow: inset 3px 0 0 var(--accent);
 }
 
-.ach-panel { min-height: 0; height: 100%; display: flex; flex-direction: column; gap: 12px; }
+.ach-panel { min-height: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column; gap: 12px; }
 .ach-panel[hidden] { display: none; }
 .ach-panel h2 { margin: 0; font-family: var(--font-head); font-size: clamp(1.2rem, 3vh, 1.7rem); letter-spacing: -0.02em; }
 .ach-panel header p { margin: 2px 0 0; color: var(--muted); font-size: clamp(0.85rem, 2vh, 1rem); line-height: 1.45; }
@@ -761,6 +762,7 @@ body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden
   min-height: 0;
   display: grid;
   place-items: center;
+  position: relative;
   padding: 6px;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -770,7 +772,8 @@ body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden
   transition: border-color 0.2s;
 }
 .shot button:hover { border-color: var(--accent); }
-.shot img { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 6px; }
+/* Image is taken out of the layout flow so a tall photo can never stretch the page */
+.shot img { position: absolute; inset: 6px; display: block; width: calc(100% - 12px); height: calc(100% - 12px); object-fit: contain; border-radius: 6px; }
 .shot figcaption { color: var(--muted); font-size: clamp(0.75rem, 1.8vh, 0.9rem); line-height: 1.35; }
 
 .lightbox { padding: 0; border: 0; background: transparent; max-width: 96vw; max-height: 96vh; overflow: hidden; color: #fff; }
@@ -779,7 +782,7 @@ body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden
 .lightbox p { margin: 8px 0 0; text-align: center; font-size: 0.95rem; }
 
 @media (max-width: 899px) {
-  .ach { grid-template-columns: 1fr; gap: 12px; }
+  .ach { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); gap: 12px; }
   .ach-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
   .ach-tab { padding: 8px 12px; }
   .ach-tab b { font-size: 0.9rem; }
