@@ -787,3 +787,42 @@ body.about-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden
   .shots { grid-auto-flow: row; grid-auto-columns: unset; grid-auto-rows: minmax(0, 1fr); }
   .ach-panel header p { display: none; }
 }
+
+
+/* =====================================================================
+   Home page: fits one screen, the page itself never scrolls
+   ===================================================================== */
+body.home-page { height: 100vh; height: 100dvh; min-height: 0; overflow: hidden; }
+
+body.home-page .hero {
+  min-height: 0;
+  overflow: hidden;
+  gap: clamp(16px, 3vw, 48px);
+  padding: clamp(10px, 2.5vh, 40px) clamp(20px, 5vw, 64px);
+}
+body.home-page .hello { font-size: calc(1.15rem * var(--fit, 1)); margin-bottom: calc(10px * var(--fit, 1)); }
+body.home-page h1 {
+  font-size: calc(clamp(2rem, min(7vw, 9vh), 5.6rem) * var(--fit, 1));
+  margin-bottom: calc(20px * var(--fit, 1));
+}
+body.home-page .role { font-size: calc(1.3rem * var(--fit, 1)); }
+body.home-page .socials { margin-bottom: 0; gap: calc(10px * var(--fit, 1)); }
+body.home-page .social-btn {
+  padding: calc(9px * var(--fit, 1)) calc(16px * var(--fit, 1));
+  font-size: calc(0.95rem * var(--fit, 1));
+}
+body.home-page .portrait {
+  width: 100%;
+  max-width: calc(clamp(180px, 100vh - 250px, 640px) * var(--fit, 1));
+  max-width: calc(clamp(180px, 100dvh - 250px, 640px) * var(--fit, 1));
+  padding: calc(14px * var(--fit, 1));
+}
+body.home-page .orbit li {
+  font-size: calc(0.85rem * var(--fit, 1));
+  padding: calc(6px * var(--fit, 1)) calc(14px * var(--fit, 1));
+}
+@media (max-width: 860px) {
+  body.home-page .portrait { max-width: calc(clamp(160px, 100dvh - 400px, 440px) * var(--fit, 1)); }
+  body.home-page .site-footer { padding-block: 10px; }
+  body.home-page .site-footer .btn { padding: 9px 18px; font-size: 0.9rem; }
+}

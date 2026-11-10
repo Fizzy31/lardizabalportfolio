@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home-page">
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -24,9 +24,7 @@
     <nav id="nav" class="nav" aria-label="Main">
       <a href="index.html" aria-current="page">Home Page</a>
       <a href="about.html">Personal Info</a>
-      <a href="education.html">Educational Attainment</a>
-      <a href="certifications.html">Certifications</a>
-      <a href="family.html">Family</a>
+      <a href="achievements.html">Achievements</a>
     </nav>
 
     <div class="header-actions">
@@ -101,5 +99,25 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    /* Shrink the content just enough that the home page always fits the screen (no scrolling) */
+    (function () {
+      var hero = document.querySelector('.hero');
+      var root = document.documentElement;
+      if (!hero) return;
+      function fit() {
+        var f = 1;
+        root.style.setProperty('--fit', f);
+        while ((hero.scrollHeight > hero.clientHeight + 1 || hero.scrollWidth > hero.clientWidth + 1) && f > 0.35) {
+          f = Math.round((f - 0.03) * 100) / 100;
+          root.style.setProperty('--fit', f);
+        }
+      }
+      fit();
+      window.addEventListener('resize', fit);
+      window.addEventListener('load', fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    })();
+  </script>
 </body>
 </html>
