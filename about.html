@@ -25,6 +25,7 @@
       <a href="index.html">Home Page</a>
       <a href="about.html" aria-current="page">Personal Info</a>
       <a href="education.html">Educational Attainment</a>
+      <a href="achievements.html">Achievements</a>
       <a href="certifications.html">Certifications</a>
       <a href="family.html">Family</a>
     </nav>
@@ -41,27 +42,41 @@
   </header>
 
   <main id="main" class="about">
-    <article class="sheet">
-      <h1>Personal Info</h1>
-
-      <div class="about-text">
-      <p class="about-lead">
-        Hi, I’m Jd Selwyn, born on October 31, 2008. I’m a <span class="dim" style="--i:0">first-year IT student</span> at the University of the Cordilleras, working toward becoming a <span class="dim" style="--i:1">full stack developer</span>. I like making <span class="dim" style="--i:2">clean websites</span>, helpful projects, and small tools that do one job well.
-      </p>
-
-      <div class="about-body">
-        <p>
-          I mostly write <span class="dim" style="--i:3">HTML, CSS, JavaScript, Java and Python</span>. This portfolio is hand-coded, and in Java I built a bitwise calculator that shows a truth table and a small circuit simulator.
-        </p>
-        <p>
-          I recently joined an AWS Student Builder Group because I want to learn <span class="dim" style="--i:4">cloud computing</span> from the beginning. I’m still new to it, and I’m enjoying that.
-        </p>
-        <p>
-          If I had to describe myself in four words, they’d be creative, minimalist, strategic and authentic. I keep my designs simple, think a problem through before I build it, and like my work to look like me.
-        </p>
+    <section class="sheet profile">
+      <div class="profile-intro">
+        <div class="avatar">
+          <img src="images/profile.jpg" alt="Jd Selwyn holding his hiphop dance champion trophy at the APPS District Festival of Talents">
+        </div>
+        <p class="prompt">About me</p>
+        <h1 class="headline">Simple builds, thought through first.</h1>
+        <p class="profile-sub">First-year IT student making clean websites and small tools that do one job well.</p>
       </div>
+
+      <div class="profile-side">
+        <div class="term">
+          <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>jd.profile</span></div>
+          <div class="term-body">
+            <p class="term-cmd"><b>$</b>cat about.txt</p>
+            <dl>
+            <div class="row" style="--r:0"><dt>name:</dt><dd>Jd Selwyn G. Lardizabal</dd></div>
+            <div class="row" style="--r:1"><dt>course:</dt><dd>Information Technology</dd></div>
+            <div class="row" style="--r:2"><dt>year:</dt><dd>1st year</dd></div>
+            <div class="row" style="--r:3"><dt>school:</dt><dd>University of the Cordilleras</dd></div>
+            <div class="row" style="--r:4"><dt>birthday:</dt><dd>October 31, 2008</dd></div>
+            <div class="row" style="--r:5"><dt>stack:</dt><dd>HTML, CSS, JavaScript, Java, Python</dd></div>
+            <div class="row" style="--r:6"><dt>interests:</dt><dd>clean websites, small tools, cloud</dd></div>
+            <div class="row" style="--r:7"><dt>traits:</dt><dd>creative, minimalist, strategic, authentic</dd></div>
+            <div class="row" style="--r:8"><dt>status:</dt><dd class="status">Learning cloud with AWS SBG</dd></div>
+            </dl>
+            <p class="term-end" aria-hidden="true"><b>$</b><span class="cursor"></span></p>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn" href="achievements.html">See achievements</a>
+          <a class="btn btn-ghost" href="index.html">Back home</a>
+        </div>
       </div>
-    </article>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -69,9 +84,9 @@
     <a class="btn" href="education.html">Next: Educational Attainment</a>
   </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
   <script>
-    /* About page: shrink the text just enough that it always fits the screen (no scrolling) */
+    /* Shrink the content just enough that it always fits the screen (no scrolling) */
     (function () {
       var sheet = document.querySelector('.sheet');
       var root = document.documentElement;

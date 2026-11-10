@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements | Lardizabal's Portfolio</title>
+  <meta name="description" content="Academic, immersion, online learning and dance achievements of Jd Selwyn G. Lardizabal.">
+  <script>
+    /* Apply the saved theme before paint so the page doesn't flash */
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="icon" type="image/x-icon" href="Favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="about-page">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="Home">JSL.</a>
+
+    <nav id="nav" class="nav" aria-label="Main">
+      <a href="index.html">Home Page</a>
+      <a href="about.html">Personal Info</a>
+      <a href="education.html">Educational Attainment</a>
+      <a href="achievements.html" aria-current="page">Achievements</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="family.html">Family</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light mode" aria-pressed="false">
+        <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button id="menu-toggle" class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="about">
+    <article class="sheet ach-sheet">
+      <h1>Achievements</h1>
+      <div class="ach">
+        <div class="ach-nav" role="tablist" aria-label="Achievement categories" aria-orientation="vertical">
+        <button class="ach-tab" role="tab" id="tab-academic" aria-controls="panel-academic" aria-selected="true" tabindex="0" type="button"><b>Academic</b><span>Honor student</span></button>
+        <button class="ach-tab" role="tab" id="tab-immersion" aria-controls="panel-immersion" aria-selected="false" tabindex="-1" type="button"><b>Work immersion</b><span>Tech4Ed</span></button>
+        <button class="ach-tab" role="tab" id="tab-online" aria-controls="panel-online" aria-selected="false" tabindex="-1" type="button"><b>Online learning</b><span>Quipper</span></button>
+        <button class="ach-tab" role="tab" id="tab-dance" aria-controls="panel-dance" aria-selected="false" tabindex="-1" type="button"><b>Performing arts</b><span>Hiphop dance</span></button>
+        </div>
+        <div class="ach-stage">
+      <section class="ach-panel" role="tabpanel" id="panel-academic" aria-labelledby="tab-academic">
+        <header>
+          <h2>Academic Excellence</h2>
+          <p>Consistent honor student from Grade 8 to Grade 12 at Joyland School, with Academic Excellence awards and medals.</p>
+        </header>
+        <div class="shots">
+          <figure class="shot">
+            <button type="button" data-full="images/academic-awards.jpg" data-cap="Academic Excellence awards and medals, Joyland School" aria-label="Enlarge: Academic Excellence Award certificates and medals from Joyland School"><img src="images/academic-awards.jpg" alt="Academic Excellence Award certificates and medals from Joyland School"></button>
+            <figcaption>Academic Excellence awards and medals, Joyland School</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="ach-panel" role="tabpanel" id="panel-immersion" aria-labelledby="tab-immersion" hidden>
+        <header>
+          <h2>Work Immersion at Tech4Ed</h2>
+          <p>Completed the 80-hour work immersion program at the San Fabian Tech4ED Center, January 5 to 16, 2026.</p>
+        </header>
+        <div class="shots">
+          <figure class="shot">
+            <button type="button" data-full="images/tech4ed-appreciation.jpg" data-cap="Certificate of Appreciation, San Fabian Tech4ED Center" aria-label="Enlarge: Certificate of Appreciation from the San Fabian Tech4ED Center"><img src="images/tech4ed-appreciation.jpg" alt="Certificate of Appreciation from the San Fabian Tech4ED Center"></button>
+            <figcaption>Certificate of Appreciation, San Fabian Tech4ED Center</figcaption>
+          </figure>
+          <figure class="shot">
+            <button type="button" data-full="images/tech4ed-recognition.jpg" data-cap="Certificate of Recognition, Joyland School" aria-label="Enlarge: Certificate of Recognition from Joyland School for the work immersion"><img src="images/tech4ed-recognition.jpg" alt="Certificate of Recognition from Joyland School for the work immersion"></button>
+            <figcaption>Certificate of Recognition, Joyland School</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="ach-panel" role="tabpanel" id="panel-online" aria-labelledby="tab-online" hidden>
+        <header>
+          <h2>Top 3 on Quipper</h2>
+          <p>Recognized for being a consistent scorer and active user of the school's online learning platform.</p>
+        </header>
+        <div class="shots">
+          <figure class="shot">
+            <button type="button" data-full="images/quipper-top3.jpg" data-cap="Top 3 Quipper Award, Grade 10 Quezon, 2nd Quarter SY 2023 to 2024" aria-label="Enlarge: Quipper North Luzon Certificate of Recognition for Top 3 Quipper Award"><img src="images/quipper-top3.jpg" alt="Quipper North Luzon Certificate of Recognition for Top 3 Quipper Award"></button>
+            <figcaption>Top 3 Quipper Award, Grade 10 Quezon, 2nd Quarter SY 2023 to 2024</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="ach-panel" role="tabpanel" id="panel-dance" aria-labelledby="tab-dance" hidden>
+        <header>
+          <h2>District Champion, Hiphop Dance</h2>
+          <p>Won first place in the secondary hiphop dance competition at the APPS District Festival of Talents.</p>
+        </header>
+        <div class="shots">
+          <figure class="shot">
+            <button type="button" data-full="images/hiphop-champion.jpg" data-cap="Hiphop Dance (Secondary) Champion, APPS District Festival of Talents" aria-label="Enlarge: Jd Selwyn with the hiphop dance champion trophy at the APPS District Festival of Talents"><img src="images/hiphop-champion.jpg" alt="Jd Selwyn with the hiphop dance champion trophy at the APPS District Festival of Talents"></button>
+            <figcaption>Hiphop Dance (Secondary) Champion, APPS District Festival of Talents</figcaption>
+          </figure>
+        </div>
+      </section>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <dialog id="lightbox" class="lightbox" aria-label="Enlarged image">
+    <img id="lightbox-img" alt="">
+    <p id="lightbox-cap"></p>
+  </dialog>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Jd Selwyn G. Lardizabal</p>
+    <a class="btn" href="certifications.html">Next: Certifications</a>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      /* Category tabs */
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.ach-tab'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.ach-panel'));
+
+      function select(i, focus) {
+        tabs.forEach(function (t, n) {
+          t.setAttribute('aria-selected', String(n === i));
+          t.tabIndex = n === i ? 0 : -1;
+          panels[n].hidden = n !== i;
+        });
+        if (focus) tabs[i].focus();
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { select(i); });
+        t.addEventListener('keydown', function (e) {
+          var k = e.key, n = null;
+          if (k === 'ArrowDown' || k === 'ArrowRight') n = (i + 1) % tabs.length;
+          if (k === 'ArrowUp' || k === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+          if (n !== null) { e.preventDefault(); select(n, true); }
+        });
+      });
+
+      /* Click a certificate to see it full size */
+      var box = document.getElementById('lightbox');
+      var big = document.getElementById('lightbox-img');
+      var cap = document.getElementById('lightbox-cap');
+      document.querySelectorAll('.shot button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          big.src = b.dataset.full;
+          big.alt = b.querySelector('img').alt;
+          cap.textContent = b.dataset.cap;
+          box.showModal();
+        });
+      });
+      box.addEventListener('click', function () { box.close(); });
+    })();
+  </script>
+</body>
+</html>
