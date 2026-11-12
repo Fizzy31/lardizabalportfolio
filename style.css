@@ -831,3 +831,25 @@ body.home-page .orbit li {
   body.home-page .site-footer { padding-block: 10px; }
   body.home-page .site-footer .btn { padding: 9px 18px; font-size: 0.9rem; }
 }
+
+/* =====================================================================
+   Achievements v2: 3 categories, timeline entries, scroll inside panel
+   ===================================================================== */
+.ach-panel { overflow: hidden; }
+.entries { flex: 1; min-height: 0; overflow-y: auto; padding: 4px 8px 12px 4px; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
+.entry { position: relative; display: grid; grid-template-columns: minmax(96px, 150px) minmax(0, 1fr); gap: 16px; padding: 0 0 22px 18px; border-left: 2px solid var(--line); margin-left: 6px; }
+.entry:last-child { padding-bottom: 4px; }
+.entry::before { content: ""; position: absolute; left: -7px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--bg, transparent); }
+.when { font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: 0.8rem; color: var(--accent); line-height: 1.4; padding-top: 2px; }
+.what h3 { margin: 0; font-family: var(--font-head); font-size: clamp(1rem, 2.4vh, 1.2rem); letter-spacing: -0.01em; }
+.what p { margin: 4px 0 10px; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
+.thumbs { display: flex; flex-wrap: wrap; gap: 10px; }
+.thumbs button { padding: 4px; border: 1px solid var(--line); border-radius: 10px; background: color-mix(in srgb, var(--panel) 60%, transparent); cursor: zoom-in; transition: border-color 0.2s, transform 0.2s; }
+.thumbs button:hover, .thumbs button:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+.thumbs img { display: block; height: clamp(110px, 20vh, 170px); width: auto; max-width: 100%; border-radius: 6px; }
+.ff-note { color: var(--muted); }
+@media (max-width: 899px) {
+  .ach-nav { grid-template-columns: repeat(3, 1fr); }
+  .entry { grid-template-columns: 1fr; gap: 4px; }
+  .when { padding-top: 0; }
+}
