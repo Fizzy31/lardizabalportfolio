@@ -865,3 +865,260 @@ body.ach-page .ach { grid-template-columns: minmax(150px, 210px) minmax(0, 1fr);
   .gallery[style*="--cols:2"] { --cols: 1 !important; }
   .shot button::after { display: none; }
 }
+
+/* =====================================================================
+   Achievements: two labelled divisions inside Curricular
+   ===================================================================== */
+.ach-div { min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+.edu-div { flex: none; }
+.awards-div { flex: 1; }
+.div-label { display: flex; align-items: center; gap: 10px; margin: 0; font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-weight: 500; font-size: clamp(0.7rem, 1.6vh, 0.82rem); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.div-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+.edu-body { height: clamp(120px, 29vh, 290px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 10px; }
+.edu-strip { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 8px; }
+.edu-strip li { display: grid; align-content: center; gap: 0; padding: 6px 10px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; background: color-mix(in srgb, var(--panel) 60%, transparent); line-height: 1.25; min-width: 0; }
+.edu-strip b { font-family: var(--font-head); font-size: clamp(0.8rem, 1.9vh, 1rem); color: var(--ink); }
+.edu-strip span { color: var(--muted); font-size: clamp(0.66rem, 1.5vh, 0.8rem); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.edu-strip em { font-style: normal; color: var(--accent); font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: clamp(0.64rem, 1.4vh, 0.76rem); }
+.edu-shot { min-height: 0; gap: 4px; }
+.edu-shot figcaption { font-size: clamp(0.68rem, 1.5vh, 0.82rem); line-height: 1.25; }
+.edu-shot figcaption b { display: block; color: var(--accent); font-weight: 500; font-family: var(--font-mono, 'IBM Plex Mono', monospace); }
+@media (max-width: 899px) {
+  .edu-body { height: clamp(110px, 26vh, 200px); gap: 6px; }
+  .edu-strip { grid-template-columns: 1fr; gap: 4px; }
+  .edu-strip li { padding: 2px 8px; }
+  .edu-strip span { display: none; }
+  .gallery[style*="--cols:6"] { --cols: 3 !important; }
+}
+
+
+/* Educational attainment timeline, with awards in a separate section below */
+body.ach-page .ach-panel { overflow: auto; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
+body.ach-page .edu-div { flex: none; }
+.edu-list { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.edu-list li { min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; padding: 10px 11px; border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 10px; background: color-mix(in srgb, var(--panel) 60%, transparent); line-height: 1.3; }
+.edu-list b { display: block; color: var(--ink); font-family: var(--font-head); font-size: clamp(0.78rem, 1.65vh, 0.98rem); }
+.edu-list span { display: block; margin-top: 4px; color: var(--muted); font-size: clamp(0.68rem, 1.35vh, 0.8rem); }
+.edu-list em { color: var(--accent); font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: clamp(0.64rem, 1.25vh, 0.76rem); font-style: normal; }
+.awards-div { flex: none; }
+.awards-div .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(145px, auto); flex: none; }
+@media (max-width: 1100px) { .edu-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } .awards-div .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 899px) {
+  body.ach-page .ach-panel { overflow: auto; }
+  .edu-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .edu-list li { padding: 8px; }
+  .edu-list b { font-size: 0.82rem; }
+  .edu-list span { font-size: 0.7rem; }
+  .edu-list em { font-size: 0.68rem; }
+  .awards-div .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 180px; }
+}
+@media (max-width: 480px) { .edu-list, .awards-div .gallery { grid-template-columns: 1fr; } }
+
+
+/* Shared educational attainment section above all achievement category tabs */
+.ach-sheet .edu-div { flex: none; margin: 0 0 clamp(12px, 2vh, 22px); }
+.ach-sheet .edu-div .div-label {
+  margin: 0 0 8px; font-family: var(--font-head);
+  font-size: clamp(1rem, 2.2vh, 1.25rem);
+}
+.ach-sheet .edu-list {
+  margin: 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px;
+}
+.ach-sheet .edu-list li {
+  min-width: 0; display: flex; flex-direction: column; justify-content: space-between;
+  gap: 8px; padding: 10px 11px; border: 1px solid var(--line);
+  border-top: 3px solid var(--accent); border-radius: 10px;
+  background: color-mix(in srgb, var(--panel) 60%, transparent); line-height: 1.3;
+}
+.ach-sheet .edu-list b {
+  display: block; color: var(--ink); font-family: var(--font-head);
+  font-size: clamp(0.78rem, 1.65vh, 0.98rem);
+}
+.ach-sheet .edu-list span {
+  display: block; margin-top: 4px; color: var(--muted);
+  font-size: clamp(0.68rem, 1.35vh, 0.8rem);
+}
+.ach-sheet .edu-list em {
+  color: var(--accent); font-family: var(--font-mono);
+  font-size: clamp(0.64rem, 1.25vh, 0.76rem); font-style: normal;
+}
+.ach-sheet .ach { flex: 1; min-height: 0; }
+.ach-sheet .ach-stage, .ach-sheet .ach-panel { min-height: 0; }
+.ach-sheet .ach-panel {
+  overflow: auto; scrollbar-width: thin; scrollbar-color: var(--accent) transparent;
+}
+.ach-sheet .awards-div { flex: none; }
+.ach-sheet .awards-div .gallery {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(145px, auto); flex: none;
+}
+@media (max-width: 1100px) {
+  .ach-sheet .edu-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ach-sheet .awards-div .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 899px) {
+  .ach-sheet .edu-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ach-sheet .edu-list li { padding: 8px; }
+  .ach-sheet .ach-panel { overflow: auto; }
+  .ach-sheet .awards-div .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 180px;
+  }
+}
+@media (max-width: 480px) {
+  .ach-sheet .edu-list { grid-template-columns: 1fr; }
+  .ach-sheet .awards-div .gallery { grid-template-columns: 1fr; }
+}
+
+
+/* Academic awards gallery: larger, easier-to-view cards */
+.ach-sheet .awards-div .gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(285px, auto);
+  gap: 16px;
+  align-content: start;
+}
+.ach-sheet .awards-div .gallery .shot {
+  gap: 8px;
+}
+.ach-sheet .awards-div .gallery .shot button {
+  flex: none;
+  height: clamp(210px, 30vh, 300px);
+  padding: 10px;
+  border-radius: 14px;
+}
+.ach-sheet .awards-div .gallery .shot img {
+  inset: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  border-radius: 8px;
+}
+.ach-sheet .awards-div .gallery .shot figcaption {
+  font-size: clamp(0.84rem, 1.7vh, 1rem);
+  line-height: 1.4;
+}
+.ach-sheet .awards-div .gallery .shot figcaption b {
+  margin-bottom: 3px;
+  font-size: 0.92em;
+}
+.ach-sheet .awards-div .gallery .shot button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+@media (max-width: 899px) {
+  .ach-sheet .awards-div .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(245px, auto);
+    gap: 12px;
+  }
+  .ach-sheet .awards-div .gallery .shot button {
+    height: clamp(180px, 27vh, 250px);
+  }
+}
+@media (max-width: 560px) {
+  .ach-sheet .awards-div .gallery {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 14px;
+  }
+  .ach-sheet .awards-div .gallery .shot button {
+    height: 260px;
+  }
+}
+
+
+/* Fixed-screen achievements layout: no page or panel scrolling */
+html:has(body.ach-page),
+body.ach-page {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden !important;
+}
+body.ach-page .about,
+body.ach-page .ach-sheet {
+  min-height: 0;
+  overflow: hidden;
+}
+body.ach-page .ach-sheet {
+  display: flex;
+  flex-direction: column;
+}
+body.ach-page .ach-sheet .edu-div {
+  flex: none;
+  margin-bottom: clamp(8px, 1.2vh, 14px);
+}
+body.ach-page .ach {
+  flex: 1;
+  min-height: 0;
+}
+body.ach-page .ach-stage,
+body.ach-page .ach-panel,
+body.ach-page .awards-div {
+  min-height: 0;
+  overflow: hidden !important;
+}
+body.ach-page .ach-panel {
+  gap: clamp(5px, 0.8vh, 9px);
+}
+body.ach-page .awards-div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+body.ach-page .awards-div .gallery {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: row;
+  gap: clamp(6px, 0.8vw, 12px);
+  overflow: hidden;
+}
+body.ach-page .awards-div .gallery .shot {
+  min-height: 0;
+  gap: 3px;
+}
+body.ach-page .awards-div .gallery .shot button {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+  padding: 5px;
+}
+body.ach-page .awards-div .gallery .shot img {
+  inset: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+}
+body.ach-page .awards-div .gallery .shot figcaption {
+  font-size: clamp(0.62rem, 1.25vh, 0.82rem);
+  line-height: 1.2;
+  max-height: 2.5em;
+  overflow: hidden;
+}
+body.ach-page .awards-div .gallery .shot figcaption b {
+  display: block;
+  margin-bottom: 1px;
+}
+@media (max-width: 899px) {
+  body.ach-page .ach {
+    grid-template-columns: minmax(110px, 20%) minmax(0, 1fr);
+    gap: 10px;
+  }
+  body.ach-page .edu-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px;
+  }
+  body.ach-page .edu-list li {
+    padding: 5px;
+    gap: 3px;
+  }
+  body.ach-page .edu-list b { font-size: 0.65rem; }
+  body.ach-page .edu-list span,
+  body.ach-page .edu-list em { font-size: 0.58rem; }
+  body.ach-page .awards-div .gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+}
