@@ -833,23 +833,35 @@ body.home-page .orbit li {
 }
 
 /* =====================================================================
-   Achievements v2: 3 categories, timeline entries, scroll inside panel
+   Achievements v3: everything fits on one screen, click photos to zoom
    ===================================================================== */
-.ach-panel { overflow: hidden; }
-.entries { flex: 1; min-height: 0; overflow-y: auto; padding: 4px 8px 12px 4px; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
-.entry { position: relative; display: grid; grid-template-columns: minmax(96px, 150px) minmax(0, 1fr); gap: 16px; padding: 0 0 22px 18px; border-left: 2px solid var(--line); margin-left: 6px; }
-.entry:last-child { padding-bottom: 4px; }
-.entry::before { content: ""; position: absolute; left: -7px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--bg, transparent); }
-.when { font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: 0.8rem; color: var(--accent); line-height: 1.4; padding-top: 2px; }
-.what h3 { margin: 0; font-family: var(--font-head); font-size: clamp(1rem, 2.4vh, 1.2rem); letter-spacing: -0.01em; }
-.what p { margin: 4px 0 10px; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
-.thumbs { display: flex; flex-wrap: wrap; gap: 10px; }
-.thumbs button { padding: 4px; border: 1px solid var(--line); border-radius: 10px; background: color-mix(in srgb, var(--panel) 60%, transparent); cursor: zoom-in; transition: border-color 0.2s, transform 0.2s; }
-.thumbs button:hover, .thumbs button:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
-.thumbs img { display: block; height: clamp(110px, 20vh, 170px); width: auto; max-width: 100%; border-radius: 6px; }
-.ff-note { color: var(--muted); }
+body.ach-page .about { max-width: none; padding: clamp(6px, 1.2vh, 14px) clamp(6px, 1vw, 16px); }
+body.ach-page .sheet { padding: clamp(10px, 2vh, 24px) clamp(12px, 2vw, 32px); }
+body.ach-page .ach { grid-template-columns: minmax(150px, 210px) minmax(0, 1fr); gap: clamp(12px, 2vw, 28px); }
+.ach-stage { min-width: 0; min-height: 0; height: 100%; }
+.ach-panel { gap: 8px; }
+.ach-panel header { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.ach-panel h2 { font-size: clamp(1.1rem, 2.6vh, 1.5rem); }
+.hint { display: inline-flex; align-items: center; gap: 6px; flex: none; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
+.hint svg { color: var(--accent); }
+.gallery { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 10px; }
+.gallery .shot { gap: 4px; }
+.gallery .shot figcaption { font-size: clamp(0.68rem, 1.5vh, 0.82rem); line-height: 1.25; }
+.gallery .shot figcaption b { display: block; color: var(--accent); font-weight: 500; font-family: var(--font-mono, 'IBM Plex Mono', monospace); }
+.shot button::after {
+  content: "Click to zoom";
+  position: absolute; left: 50%; bottom: 10px; transform: translate(-50%, 6px);
+  padding: 4px 10px; border-radius: 999px; background: var(--accent); color: var(--on-accent);
+  font-size: 0.75rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s;
+}
+.shot button:hover::after, .shot button:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
 @media (max-width: 899px) {
+  body.ach-page .ach { grid-template-columns: 1fr; }
   .ach-nav { grid-template-columns: repeat(3, 1fr); }
-  .entry { grid-template-columns: 1fr; gap: 4px; }
-  .when { padding-top: 0; }
+  .ach-panel header p { display: none; }
+  .hint { padding: 3px 8px; font-size: 0.7rem; }
+  .gallery { gap: 6px; }
+  .gallery[style*="--cols:4"] { --cols: 3 !important; }
+  .gallery[style*="--cols:2"] { --cols: 1 !important; }
+  .shot button::after { display: none; }
 }
