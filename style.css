@@ -1122,3 +1122,44 @@ body.ach-page .awards-div .gallery .shot figcaption b {
     grid-template-rows: repeat(2, minmax(0, 1fr));
   }
 }
+
+
+/* Educational attainment: emphasize completed qualifications and current level */
+body.ach-page .ach-sheet .edu-list {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+body.ach-page .ach-sheet .edu-list li {
+  min-height: 88px;
+}
+.edu-status {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 7px;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: clamp(0.58rem, 1.05vh, 0.7rem);
+  line-height: 1.4;
+  font-style: normal;
+}
+.edu-status.current {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.edu-status.completed {
+  color: var(--muted);
+}
+@media (max-width: 899px) {
+  body.ach-page .ach-sheet .edu-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body.ach-page .ach-sheet .edu-list b {
+    font-size: 0.76rem;
+  }
+  body.ach-page .ach-sheet .edu-list span,
+  body.ach-page .ach-sheet .edu-list em {
+    font-size: 0.65rem;
+  }
+}
