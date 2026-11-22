@@ -1305,3 +1305,11 @@ body.ff-page .about { min-height: 0; overflow: hidden; padding: clamp(6px, 1.2vh
   .ff-shot figcaption b { display: none; }
   .ff-shot figcaption { left: 5px; bottom: 5px; padding: 2px 7px; font-size: 0.6rem; }
 }
+
+
+/* Desktop and tablet: photos fill the whole row edge to edge (no empty space) */
+@media (min-width: 601px) {
+  .ff-row { justify-content: stretch; }
+  .ff-shot { flex: var(--g, 1) 1 0; aspect-ratio: auto; }
+  .ff-shot img { object-fit: cover; object-position: var(--pos, 50% 30%); }
+}
