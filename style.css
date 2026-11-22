@@ -1307,9 +1307,12 @@ body.ff-page .about { min-height: 0; overflow: hidden; padding: clamp(6px, 1.2vh
 }
 
 
-/* Desktop and tablet: photos fill the whole row edge to edge (no empty space) */
-@media (min-width: 601px) {
-  .ff-row { justify-content: stretch; }
-  .ff-shot { flex: var(--g, 1) 1 0; aspect-ratio: auto; }
-  .ff-shot img { object-fit: cover; object-position: var(--pos, 50% 30%); }
+/* Whole photo always shown (never cropped); a soft blurred copy fills the space around it */
+.ff-row { justify-content: stretch; }
+.ff-shot { flex: var(--ar, 1) 1 0; aspect-ratio: auto; }
+.ff-shot button { isolation: isolate; }
+.ff-shot img { object-fit: contain; z-index: 1; }
+.ff-shot img.ff-bg {
+  position: absolute; inset: -12%; width: 124%; height: 124%; z-index: -1;
+  object-fit: cover; filter: blur(22px) saturate(1.15) brightness(0.75); transform: scale(1.05);
 }
