@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="about-page">
+<body class="about-page ff-page">
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -40,11 +40,34 @@
   </header>
 
   <main id="main" class="about">
-    <section class="sheet">
+    <section class="sheet ff-sheet">
       <h1>Family &amp; Friends</h1>
-      <p class="ff-note">The people who support me. Photos and short notes go here.</p>
+      <p class="ff-note">The people who support me. Click any photo to zoom.</p>
+
+      <div class="ff-group" id="family">
+        <h2 class="div-label">Family</h2>
+        <div class="ff-family">
+          <figure class="shot ff-shot ff-dad"><button type="button" data-full="family-dad.jpg" data-cap="Shaking hands with my dad" aria-label="Click to zoom: Shaking hands with my dad"><img src="family-dad.jpg" alt="Shaking hands with my dad" loading="lazy"></button><figcaption><b>Dad</b>Shaking hands with my dad</figcaption></figure>
+          <figure class="shot ff-shot "><button type="button" data-full="family-mom.jpg" data-cap="A hug with my mom" aria-label="Click to zoom: A hug with my mom"><img src="family-mom.jpg" alt="A hug with my mom" loading="lazy"></button><figcaption><b>Mom</b>A hug with my mom</figcaption></figure>
+          <figure class="shot ff-shot "><button type="button" data-full="family-sibling.jpg" data-cap="A selfie with my sibling" aria-label="Click to zoom: A selfie with my sibling"><img src="family-sibling.jpg" alt="A selfie with my sibling" loading="lazy"></button><figcaption><b>Sibling</b>A selfie with my sibling</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="ff-group" id="friends">
+        <h2 class="div-label">Friends</h2>
+        <div class="ff-friends">
+          <figure class="shot ff-shot "><button type="button" data-full="friends-photobooth.jpg" data-cap="Photobooth fun with a friend" aria-label="Click to zoom: Photobooth fun with a friend"><img src="friends-photobooth.jpg" alt="Photobooth fun with a friend" loading="lazy"></button><figcaption><b>Friends</b>Photobooth fun with a friend</figcaption></figure>
+          <figure class="shot ff-shot "><button type="button" data-full="friends-pines.jpg" data-cap="Hangout with the boys at the pine trees" aria-label="Click to zoom: Hangout with the boys at the pine trees"><img src="friends-pines.jpg" alt="Hangout with the boys at the pine trees" loading="lazy"></button><figcaption><b>Friends</b>Hangout with the boys at the pine trees</figcaption></figure>
+          <figure class="shot ff-shot "><button type="button" data-full="friends-dinner.jpg" data-cap="Dinner out with friends" aria-label="Click to zoom: Dinner out with friends"><img src="friends-dinner.jpg" alt="Dinner out with friends" loading="lazy"></button><figcaption><b>Friends</b>Dinner out with friends</figcaption></figure>
+        </div>
+      </div>
     </section>
   </main>
+
+  <dialog id="lightbox" class="lightbox" aria-label="Enlarged image">
+    <img id="lightbox-img" alt="">
+    <p id="lightbox-cap"></p>
+  </dialog>
 
   <footer class="site-footer">
     <p>&copy; <span id="year">2026</span> Jd Selwyn G. Lardizabal</p>
@@ -52,5 +75,22 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    (function () {
+      /* Click a photo to see it full size */
+      var box = document.getElementById('lightbox');
+      var big = document.getElementById('lightbox-img');
+      var cap = document.getElementById('lightbox-cap');
+      document.querySelectorAll('.shot button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          big.src = b.dataset.full;
+          big.alt = b.querySelector('img').alt;
+          cap.textContent = b.dataset.cap;
+          box.showModal();
+        });
+      });
+      box.addEventListener('click', function () { box.close(); });
+    })();
+  </script>
 </body>
 </html>

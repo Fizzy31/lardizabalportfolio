@@ -1264,3 +1264,46 @@ body.ach-page .edu-list .edu-proof img {
   #extracurricular { grid-column: 2; grid-row: 2; }
   .ach-group .hint { display: none; }
 }
+
+
+/* =====================================================================
+   Family & Friends: scrollable photo page (the other pages stay one screen)
+   ===================================================================== */
+html:has(body.ff-page),
+body.ff-page { height: auto; min-height: 100%; overflow: auto !important; }
+body.ff-page .about { flex: none; min-height: 0; }
+body.ff-page .sheet.ff-sheet { overflow: visible; display: block; }
+.ff-sheet h1 { margin: 0 0 6px; font-size: clamp(1.1rem, 2.8vh, 1.5rem); }
+.ff-sheet .ff-note { margin: 0 0 clamp(14px, 2.5vh, 26px); color: var(--muted); }
+.ff-group { margin: 0 0 clamp(18px, 3.5vh, 36px); }
+.ff-group:last-child { margin-bottom: 0; }
+.ff-group .div-label { margin-bottom: 12px; }
+
+.ff-family { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.ff-friends { column-count: 3; column-gap: 14px; }
+.ff-friends .ff-shot { break-inside: avoid; margin-bottom: 14px; }
+
+.ff-shot { margin: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.ff-shot button {
+  position: relative; display: block; width: 100%; padding: 0; overflow: hidden;
+  border: 1px solid var(--line); border-radius: 14px; cursor: zoom-in;
+  background: color-mix(in srgb, var(--panel) 60%, transparent);
+  transition: border-color 0.2s;
+}
+.ff-shot button:hover, .ff-shot button:focus-visible { border-color: var(--accent); }
+.ff-shot button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.ff-shot img { position: static; display: block; width: 100%; height: auto; border-radius: 0; }
+.ff-family .ff-shot button { aspect-ratio: 4 / 5; }
+.ff-family .ff-shot img { height: 100%; object-fit: cover; object-position: 50% 30%; }
+.ff-family .ff-dad img { object-position: 62% 30%; }
+.ff-shot figcaption { color: var(--muted); font-size: 0.9rem; line-height: 1.35; }
+.ff-shot figcaption b { display: block; color: var(--accent); font-weight: 500; font-family: var(--font-mono, 'IBM Plex Mono', monospace); }
+
+@media (max-width: 899px) {
+  .ff-friends { column-count: 2; }
+}
+@media (max-width: 600px) {
+  .ff-family { grid-template-columns: 1fr; }
+  .ff-friends { column-count: 1; }
+  .ff-family .ff-shot button { aspect-ratio: 1 / 1; }
+}
