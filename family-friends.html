@@ -13,7 +13,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=4">
+  <style>
+    /* Fill the whole screen with photos (edge to edge, no empty space) */
+    @media (min-width: 601px) {
+      .ff-row { justify-content: stretch; }
+      .ff-shot { flex: var(--g, 1) 1 0; aspect-ratio: auto; }
+      .ff-shot img { object-fit: cover; object-position: var(--pos, 50% 30%); }
+    }
+  </style>
 </head>
 <body class="about-page ff-page">
   <a class="skip" href="#main">Skip to content</a>
