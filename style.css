@@ -1316,3 +1316,13 @@ body.ff-page .about { min-height: 0; overflow: hidden; padding: clamp(6px, 1.2vh
   position: absolute; inset: -12%; width: 124%; height: 124%; z-index: -1;
   object-fit: cover; filter: blur(22px) saturate(1.15) brightness(0.75); transform: scale(1.05);
 }
+
+
+/* ---------- Uncropped profile photo (full portrait, 2:3) ---------- */
+.id-photo { aspect-ratio: 2 / 3; }
+.id-photo img { object-fit: contain; object-position: center; }
+
+/* About page: portrait frame instead of a circle so the whole photo shows */
+.avatar { width: calc(clamp(110px, 27vh, 270px) * 0.64 * var(--fit, 1)); aspect-ratio: 2 / 3; }
+.avatar::before { border-radius: 26px; }
+.avatar img { object-fit: contain; border-radius: 14px; }
