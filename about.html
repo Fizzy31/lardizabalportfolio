@@ -19,10 +19,12 @@
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <a class="logo" href="index.html" aria-label="Home">JSL.</a>
+    <a class="home-btn" href="index.html" aria-label="Back to home">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.2V21h13V9.2"/><path d="M9.5 21v-6h5v6"/></svg>
+      <span>Home</span>
+    </a>
 
     <nav id="nav" class="nav" aria-label="Main">
-      <a href="index.html">Home Page</a>
       <a href="about.html" aria-current="page">Personal Info</a>
       <a href="achievements.html">Achievements</a>
       <a href="family-friends.html">Family &amp; Friends</a>
@@ -40,40 +42,85 @@
   </header>
 
   <main id="main" class="about">
-    <section class="sheet profile">
-      <div class="profile-intro">
-        <div class="avatar">
-          <img src="profile.png" alt="Jd Selwyn holding his hiphop dance champion trophy at the APPS District Festival of Talents">
-        </div>
-        <h1 class="headline">Simple builds, thought through first.</h1>
-        <p class="profile-sub">First-year IT student making clean websites and small tools that do one job well.</p>
+    <section class="sheet pi-sheet">
+
+      <!-- Identity + main details -->
+      <div class="pi-card pi-top">
+        <header class="pi-id">
+          <span class="pi-avatar"><img src="profile.png" alt="Jd Selwyn G. Lardizabal"></span>
+          <div class="pi-name">
+            <h1>Jd Selwyn G. Lardizabal</h1>
+            <p>BSIT &bull; 1st Year</p>
+          </div>
+        </header>
+
+        <dl class="pi-grid pi-grid-6">
+          <div class="pi-f"><dt>Gender</dt><dd>Male</dd></div>
+          <div class="pi-f"><dt>Status</dt><dd>Single</dd></div>
+          <div class="pi-f"><dt>Age</dt><dd>18</dd></div>
+
+          <div class="pi-f"><dt>Birthday</dt><dd>October 31, 2008</dd></div>
+          <div class="pi-f"><dt>Address</dt><dd>Baguio City, Benguet</dd></div>
+          <div class="pi-f"><dt>Phone Number</dt><dd>+63 930 566 8512</dd></div>
+
+          <div class="pi-f"><dt>School</dt><dd>University of the Cordilleras</dd></div>
+          <div class="pi-f"><dt>Year Level</dt><dd>1st Year</dd></div>
+          <div class="pi-f"><dt>Program</dt><dd>Information Technology</dd></div>
+
+          <div class="pi-f pi-span-4"><dt>College</dt><dd>College of Information Technology</dd></div>
+          <div class="pi-f"><dt>Email</dt><dd>jdselwynlardizabal@gmail.com</dd></div>
+
+          <div class="pi-f pi-span-3"><dt>Father's Name</dt><dd>Ryan Paul Lardizabal</dd></div>
+          <div class="pi-f pi-span-3"><dt>Mother's Name</dt><dd>Jinky Marie Gonzaga</dd></div>
+        </dl>
       </div>
 
-      <div class="profile-side">
-        <div class="term">
-          <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>jd.profile</span></div>
-          <div class="term-body">
-            <p class="term-cmd"><b>$</b>Personal Info: </p>
-            <dl>
-            <div class="row" style="--r:0"><dt>name:</dt><dd>Jd Selwyn G. Lardizabal</dd></div>
-            <div class="row" style="--r:1"><dt>Age:</dt><dd>18</dd></div>
-            <div class="row" style="--r:2"><dt>Sex:</dt><dd>Male</dd></div>
-            <div class="row" style="--r:3"><dt>Birthday:</dt><dd>October 31, 2008</dd></div>
-            <div class="row" style="--r:4"><dt>Birthplace</dt><dd>Baguio General Hospital, Baguio City </dd></div>
-            <div class="row" style="--r:5"><dt>Father's Name:</dt><dd>Ryan Paul Lardizabal</dd></div>
-            <div class="row" style="--r:6"><dt>Mother's Name:</dt><dd>Jinky Marie Gonzaga</dd></div>
-            <div class="row" style="--r:7"><dt>Civil Status:</dt><dd>Single</dd></div>
-            <div class="row" style="--r:8"><dt>Eye Color:</dt><dd>Black</dd></div>
-            <div class="row" style="--r:9"><dt>Blood Type:</dt><dd>O+</dd></div>
-            <div class="row" style="--r:10"><dt>Religion:</dt><dd class="status">Roman Catholic</dd></div>
-            </dl>
-            <p class="term-end" aria-hidden="true"><b>$</b><span class="cursor"></span></p>
-          </div>
+      <!-- Body details -->
+      <div class="pi-card">
+        <dl class="pi-grid pi-grid-10">
+          <div class="pi-f"><dt>Blood Type</dt><dd>O+</dd></div>
+          <div class="pi-f"><dt>Eye Color</dt><dd>Black</dd></div>
+          <div class="pi-f"><dt>Height</dt><dd>5'6&quot;</dd></div>
+          <div class="pi-f"><dt>Weight</dt><dd>60 kg</dd></div>
+          <div class="pi-f"><dt>Shoe Size</dt><dd>42</dd></div>
+
+          <div class="pi-f"><dt>Zodiac Sign</dt><dd>Scorpio</dd></div>
+          <div class="pi-f"><dt>Birthplace</dt><dd>Baguio General Hospital, Baguio City</dd></div>
+          <div class="pi-f"><dt>Hometown</dt><dd>Baguio City</dd></div>
+          <div class="pi-f"><dt>Nationality</dt><dd>Filipino</dd></div>
+          <div class="pi-f"><dt>Religion</dt><dd class="pi-dot">Roman Catholic</dd></div>
+        </dl>
+      </div>
+
+      <!-- Languages, hobbies, interests, skills -->
+      <div class="pi-cards">
+        <div class="pi-mini">
+          <span class="pi-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 14a4 4 0 0 1-4 4H8l-5 3V6a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></span>
+          <div><b>Languages</b><p>English &bull; Filipino</p></div>
         </div>
-        <div class="actions">
-          <a class="btn btn-ghost" href="index.html">Back home</a>
+        <div class="pi-mini">
+          <span class="pi-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="5.5"/><path d="M7 11v3M5.5 12.5h3"/><circle cx="16" cy="11.5" r="0.8" fill="currentColor"/><circle cx="18.4" cy="14" r="0.8" fill="currentColor"/></svg></span>
+          <div><b>Hobbies</b><p>Dancing &bull; Coding &bull; Gaming</p></div>
+        </div>
+        <div class="pi-mini">
+          <span class="pi-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5S3.5 15.6 3.5 9.8A4.8 4.8 0 0 1 12 6.7a4.8 4.8 0 0 1 8.5 3.1c0 5.8-8.5 10.7-8.5 10.7z"/></svg></span>
+          <div><b>Interests</b><p>Computers &bull; Web Design</p></div>
+        </div>
+        <div class="pi-mini">
+          <span class="pi-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 18.5h5M10.5 21.5h3"/><path d="M12 2.5a6 6 0 0 0-3.5 10.9c.55.4.9 1.05 1 1.7h5c.1-.65.45-1.3 1-1.7A6 6 0 0 0 12 2.5z"/></svg></span>
+          <div><b>Skills</b><p>Problem Solving &bull; Web Design</p></div>
         </div>
       </div>
+
+      <!-- Motto -->
+      <figure class="pi-motto">
+        <span class="pi-quote" aria-hidden="true">&ldquo;</span>
+        <div>
+          <blockquote>To live is to be known and remembered by others</blockquote>
+          <figcaption>My Motto</figcaption>
+        </div>
+      </figure>
+
     </section>
   </main>
 
