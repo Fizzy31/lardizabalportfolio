@@ -180,6 +180,8 @@ a { color: inherit; }
 }
 .home-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 .home-btn svg { color: var(--accent); flex: none; }
+/* No home button on the home page itself — hidden but keeps the nav centred */
+body.home-page .home-btn { visibility: hidden; pointer-events: none; }
 
 .nav { display: flex; gap: 6px; }
 .nav a {
@@ -341,12 +343,12 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 18px;
+  padding: calc(12px * var(--fit, 1)) calc(18px * var(--fit, 1));
   background: var(--accent);
   color: var(--on-accent);
 }
-.slot { width: 54px; height: 10px; border-radius: 999px; background: var(--bg); opacity: 0.85; }
-.id-logo { font-family: var(--font-head); font-weight: 800; letter-spacing: -0.02em; }
+.slot { width: calc(54px * var(--fit, 1)); height: calc(10px * var(--fit, 1)); border-radius: 999px; background: var(--bg); opacity: 0.85; }
+.id-logo { font-family: var(--font-head); font-weight: 800; letter-spacing: -0.02em; font-size: calc(1rem * var(--fit, 1)); }
 
 .id-photo { aspect-ratio: 1 / 0.95; }
 .id-photo img {
@@ -357,9 +359,9 @@ h1 {
   object-position: 62% 30%;
 }
 
-.id-plate { display: grid; gap: 2px; padding: 14px 18px 18px; }
-.id-plate b { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; }
-.id-plate span { color: var(--muted); font-size: 0.95rem; }
+.id-plate { display: grid; gap: calc(2px * var(--fit, 1)); padding: calc(14px * var(--fit, 1)) calc(18px * var(--fit, 1)) calc(18px * var(--fit, 1)); }
+.id-plate b { font-family: var(--font-head); font-size: calc(1.2rem * var(--fit, 1)); font-weight: 700; }
+.id-plate span { color: var(--muted); font-size: calc(0.95rem * var(--fit, 1)); }
 
 /* Light that follows the pointer across the card */
 .glare {
@@ -866,18 +868,20 @@ body.home-page .social-btn {
    so it never forces the whole page to shrink */
 body.home-page .portrait {
   width: 100%;
-  max-width: calc(min(560px, (100vh - 310px) / 1.5) * var(--fit, 1));
-  max-width: calc(min(560px, (100dvh - 310px) / 1.5) * var(--fit, 1));
+  max-width: calc(clamp(180px, (100vh - 310px) / 1.5, 560px) * var(--fit, 1));
+  max-width: calc(clamp(180px, (100dvh - 310px) / 1.5, 560px) * var(--fit, 1));
   padding: calc(14px * var(--fit, 1));
 }
 body.home-page .orbit li {
   font-size: calc(0.85rem * var(--fit, 1));
   padding: calc(6px * var(--fit, 1)) calc(14px * var(--fit, 1));
 }
-@media (max-width: 860px) {
+/* Stack only on real phone widths — at 700–860px the two columns still fit
+   and give the portrait and name much more room than stacking does */
+@media (max-width: 700px) {
+  body.home-page .hero { grid-template-columns: 1fr; }
   body.home-page .portrait { max-width: calc(clamp(160px, 100dvh - 400px, 440px) * var(--fit, 1)); }
   body.home-page .site-footer { padding-block: 10px; }
-  body.home-page .site-footer .btn { padding: 9px 18px; font-size: 0.9rem; }
 }
 
 /* =====================================================================
