@@ -24,6 +24,20 @@
       position: absolute; inset: -12%; width: 124%; height: 124%; z-index: -1;
       object-fit: cover; filter: blur(22px) saturate(1.15) brightness(0.75); transform: scale(1.05);
     }
+    /* Friends: photo at its true shape, names listed beside it */
+    .ff-friends { justify-content: flex-start; align-items: stretch; gap: clamp(14px, 2vw, 28px); }
+    .ff-friends .ff-shot { flex: 0 0 auto; aspect-ratio: 0.75; height: 100%; }
+    .ff-friends .ff-shot img { object-fit: cover; }
+    .ff-names {
+      align-self: center; padding: clamp(14px, 2.4vh, 26px) clamp(18px, 2.4vw, 32px);
+      border: 1px solid var(--line); border-radius: 12px;
+      background: color-mix(in srgb, var(--panel) 60%, transparent);
+    }
+    .ff-names h3 { margin: 0 0 0.7em; font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: clamp(0.75rem, 1.7vh, 0.9rem); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+    .ff-names ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6em; }
+    .ff-names li { font-size: clamp(0.95rem, 2.4vh, 1.25rem); font-weight: 500; color: var(--ink); }
+    .ff-names li::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 0.7em; border-radius: 50%; background: var(--accent); }
+    @media (max-width: 700px) { .ff-friends { flex-direction: column; } .ff-friends .ff-shot { height: auto; width: 100%; } }
   </style>
 </head>
 <body class="about-page ff-page">
@@ -66,8 +80,17 @@
 
       <div class="ff-group" id="friends">
         <h2 class="div-label">Friends</h2>
-        <div class="ff-row">
-          <figure class="shot ff-shot" style="--ar:0.75"><button type="button" data-full="friends-pines.jpg" data-cap="With the boys at the pine trees: Eory Juguilon, Andre Luis Morante, Leonard Cantor and Khian Patrick Jetter" aria-label="Click to zoom: With the boys at the pine trees: Eory Juguilon, Andre Luis Morante, Leonard Cantor and Khian Patrick Jetter"><img src="friends-pines.jpg" alt="With the boys at the pine trees: Eory Juguilon, Andre Luis Morante, Leonard Cantor and Khian Patrick Jetter"><img class="ff-bg" src="friends-pines.jpg" alt="" aria-hidden="true"></button><figcaption>With the boys at the pine trees: Eory Juguilon, Andre Luis Morante, Leonard Cantor and Khian Patrick Jetter</figcaption></figure>
+        <div class="ff-row ff-friends">
+          <figure class="shot ff-shot" style="--ar:0.75"><button type="button" data-full="friends-pines.jpg" data-cap="Hangout with the boys at the pine trees" aria-label="Click to zoom: Hangout with the boys at the pine trees"><img src="friends-pines.jpg" alt="Hangout with the boys at the pine trees"></button><figcaption>Hangout with the boys at the pine trees</figcaption></figure>
+          <div class="ff-names">
+            <h3>In this photo</h3>
+            <ul>
+              <li>Eory Juguilon</li>
+              <li>Andre Luis Morante</li>
+              <li>Leonard Cantor</li>
+              <li>Khian Patrick Jetter</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
