@@ -18,14 +18,14 @@
     /* One row, every photo the same height, shown whole (never cropped), sized to fit the screen */
     .ff-board {
       flex: 1; min-height: 0;
-      display: flex; justify-content: center; align-items: center; gap: clamp(18px, 3vw, 48px);
+      display: flex; justify-content: center; align-items: flex-start; gap: clamp(18px, 3vw, 48px); padding-top: clamp(0px, 4vh, 36px);
     }
     .ff-col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
     .ff-items { display: flex; align-items: flex-start; gap: clamp(8px, 1vw, 16px); }
     .ff-board .div-label { margin: 0; }
 
     /* --h = photo height: as tall as the screen allows, but never wider than the row */
-      .ff-board { --names-w: clamp(150px, 15vw, 230px); --h: min(42vh, 20vw); }
+      .ff-board { --names-w: clamp(150px, 15vw, 230px); --h: min(42vh, 22vw); }
 
     .ff-card { margin: 0; display: flex; flex-direction: column; gap: 8px; width: calc(var(--h) * var(--ar)); }
     .ff-card button {
@@ -36,19 +36,11 @@
     .ff-card button:hover, .ff-card button:focus-visible { border-color: var(--accent); }
     .ff-card button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
     .ff-card img { display: block; width: 100%; height: 100%; object-fit: contain; }
-    .ff-card figcaption { font-size: clamp(0.72rem, 1.7vh, 0.9rem); line-height: 1.35; color: var(--muted); }
+    .ff-card figcaption { font-size: clamp(0.72rem, 1.7vh, 0.9rem); line-height: 1.4; color: var(--muted); }
+    .ff-card figcaption b { margin-bottom: 2px; }
     .ff-card figcaption b { display: block; color: var(--ink); font-weight: 500; }
 
     .ff-friends-wrap { display: flex; align-items: flex-start; gap: clamp(10px, 1.2vw, 18px); }
-    .ff-names {
-      width: var(--names-w); padding: clamp(12px, 2vh, 20px) clamp(14px, 1.4vw, 22px);
-      border: 1px solid var(--line); border-radius: 12px;
-      background: color-mix(in srgb, var(--panel) 60%, transparent);
-    }
-    .ff-names h3 { margin: 0 0 0.7em; font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: clamp(0.68rem, 1.5vh, 0.8rem); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
-    .ff-names ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6em; }
-    .ff-names li { font-size: clamp(0.85rem, 2vh, 1.05rem); font-weight: 500; color: var(--ink); }
-    .ff-names li::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 0.6em; border-radius: 50%; background: var(--accent); }
 
     /* Narrow screens: stack everything and allow normal scrolling */
     @media (max-width: 900px) {
@@ -57,7 +49,6 @@
       .ff-board { flex-direction: column; align-items: stretch; --h: 60vw; }
       .ff-items, .ff-friends-wrap { flex-wrap: wrap; justify-content: center; }
       .ff-card { width: min(100%, calc(var(--h) * var(--ar))); }
-      .ff-names { width: 100%; }
     }
   </style>
 </head>
@@ -103,16 +94,7 @@
         <div class="ff-col" id="friends">
           <h2 class="div-label">Friends</h2>
           <div class="ff-friends-wrap">
-            <figure class="ff-card" style="--ar:0.75"><button type="button" data-full="friends-pines.jpg" data-cap="Hangout with the boys at the pine trees" aria-label="Click to zoom: Hangout with the boys at the pine trees"><img src="friends-pines.jpg" alt="Hangout with the boys at the pine trees"></button><figcaption><b>Hangout</b>At the pine trees</figcaption></figure>
-            <div class="ff-names">
-              <h3>The boys</h3>
-              <ul>
-                <li>Eory Juguilon</li>
-                <li>Andre Luis Morante</li>
-                <li>Leonard Cantor</li>
-                <li>Khian Patrick Jetter</li>
-              </ul>
-            </div>
+            <figure class="ff-card" style="--ar:0.75"><button type="button" data-full="friends-pines.jpg" data-cap="Hangout with the boys at the pine trees" aria-label="Click to zoom: Hangout with the boys at the pine trees"><img src="friends-pines.jpg" alt="Hangout with the boys at the pine trees"></button><figcaption><b>Hangout with the boys at the pine trees</b>Eory Juguilon, Andre Luis Morante, Leonard Cantor and Khian Patrick Jetter</figcaption></figure>
           </div>
         </div>
       </div>
@@ -153,9 +135,8 @@
       if (!board) return;
       function size() {
         if (window.innerWidth <= 900) { board.style.removeProperty('--h'); return; }
-        var names = Math.min(Math.max(150, window.innerWidth * 0.15), 230);
-        var byHeight = board.clientHeight - 112;
-        var byWidth = (board.clientWidth - names - 120) / 3.75;
+                var byHeight = board.clientHeight - 150;
+        var byWidth = (board.clientWidth - 110) / 3.75;
         var h = Math.floor(Math.max(120, Math.min(byHeight, byWidth)));
         board.style.setProperty('--h', h + 'px');
       }
