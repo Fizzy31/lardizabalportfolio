@@ -17,7 +17,7 @@
   <style>
     /* One row, every photo the same height, shown whole (never cropped), sized to fit the screen */
     .ff-board {
-      flex: 1; min-height: 0; container-type: size;
+      flex: 1; min-height: 0;
       display: flex; justify-content: center; align-items: center; gap: clamp(18px, 3vw, 48px);
     }
     .ff-col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
@@ -25,7 +25,7 @@
     .ff-board .div-label { margin: 0; }
 
     /* --h = photo height: as tall as the screen allows, but never wider than the row */
-    .ff-board { --names-w: clamp(150px, 15vw, 230px); --h: min(calc(100cqh - 112px), calc((100cqw - var(--names-w) - 120px) / 3.75)); }
+      .ff-board { --names-w: clamp(150px, 15vw, 230px); --h: min(42vh, 20vw); }
 
     .ff-card { margin: 0; display: flex; flex-direction: column; gap: 8px; width: calc(var(--h) * var(--ar)); }
     .ff-card button {
@@ -54,7 +54,7 @@
     @media (max-width: 900px) {
       html:has(body.ff-page), body.ff-page { overflow: auto !important; height: auto; }
       body.ff-page .about, .sheet.ff-sheet { overflow: visible; }
-      .ff-board { container-type: normal; flex-direction: column; align-items: stretch; --h: 60vw; }
+      .ff-board { flex-direction: column; align-items: stretch; --h: 60vw; }
       .ff-items, .ff-friends-wrap { flex-wrap: wrap; justify-content: center; }
       .ff-card { width: min(100%, calc(var(--h) * var(--ar))); }
       .ff-names { width: 100%; }
@@ -94,16 +94,16 @@
         <div class="ff-col" id="family">
           <h2 class="div-label">Family</h2>
           <div class="ff-items">
-            <figure class="ff-card shot" style="--ar:1.5"><button type="button" data-full="family-dad.jpg" data-cap="Handshake with my dad, Ryan Paul Lardizabal" aria-label="Click to zoom: Handshake with my dad"><img src="family-dad.jpg" alt="Handshake with my dad"></button><figcaption><b>Father</b>Ryan Paul Lardizabal</figcaption></figure>
-            <figure class="ff-card shot" style="--ar:0.75"><button type="button" data-full="family-mom.jpg" data-cap="Hugging my mom, Jinky Marie Gonzaga" aria-label="Click to zoom: Hugging my mom"><img src="family-mom.jpg" alt="Hugging my mom"></button><figcaption><b>Mother</b>Jinky Marie Gonzaga</figcaption></figure>
-            <figure class="ff-card shot" style="--ar:0.75"><button type="button" data-full="family-sibling.jpg" data-cap="Selfie with my sibling, Dior Jarley Basto" aria-label="Click to zoom: Selfie with my sibling"><img src="family-sibling.jpg" alt="Selfie with my sibling"></button><figcaption><b>Sibling</b>Dior Jarley Basto</figcaption></figure>
+            <figure class="ff-card" style="--ar:1.5"><button type="button" data-full="family-dad.jpg" data-cap="Handshake with my dad, Ryan Paul Lardizabal" aria-label="Click to zoom: Handshake with my dad"><img src="family-dad.jpg" alt="Handshake with my dad"></button><figcaption><b>Father</b>Ryan Paul Lardizabal</figcaption></figure>
+            <figure class="ff-card" style="--ar:0.75"><button type="button" data-full="family-mom.jpg" data-cap="Hugging my mom, Jinky Marie Gonzaga" aria-label="Click to zoom: Hugging my mom"><img src="family-mom.jpg" alt="Hugging my mom"></button><figcaption><b>Mother</b>Jinky Marie Gonzaga</figcaption></figure>
+            <figure class="ff-card" style="--ar:0.75"><button type="button" data-full="family-sibling.jpg" data-cap="Selfie with my sibling, Dior Jarley Basto" aria-label="Click to zoom: Selfie with my sibling"><img src="family-sibling.jpg" alt="Selfie with my sibling"></button><figcaption><b>Sibling</b>Dior Jarley Basto</figcaption></figure>
           </div>
         </div>
 
         <div class="ff-col" id="friends">
           <h2 class="div-label">Friends</h2>
           <div class="ff-friends-wrap">
-            <figure class="ff-card shot" style="--ar:0.75"><button type="button" data-full="friends-pines.jpg" data-cap="Hangout with the boys at the pine trees" aria-label="Click to zoom: Hangout with the boys at the pine trees"><img src="friends-pines.jpg" alt="Hangout with the boys at the pine trees"></button><figcaption>Hangout at the pine trees</figcaption></figure>
+            <figure class="ff-card" style="--ar:0.75"><button type="button" data-full="friends-pines.jpg" data-cap="Hangout with the boys at the pine trees" aria-label="Click to zoom: Hangout with the boys at the pine trees"><img src="friends-pines.jpg" alt="Hangout with the boys at the pine trees"></button><figcaption><b>Hangout</b>At the pine trees</figcaption></figure>
             <div class="ff-names">
               <h3>The boys</h3>
               <ul>
@@ -136,7 +136,7 @@
       var box = document.getElementById('lightbox');
       var big = document.getElementById('lightbox-img');
       var cap = document.getElementById('lightbox-cap');
-      document.querySelectorAll('.shot button').forEach(function (b) {
+      document.querySelectorAll('.ff-card button').forEach(function (b) {
         b.addEventListener('click', function () {
           big.src = b.dataset.full;
           big.alt = b.querySelector('img').alt;
@@ -145,6 +145,24 @@
         });
       });
       box.addEventListener('click', function () { box.close(); });
+    })();
+  </script>
+  <script>    /* Size the photos: as tall as the screen allows, but never wider than the row (photos stay uncropped) */
+    (function () {
+      var board = document.querySelector('.ff-board');
+      if (!board) return;
+      function size() {
+        if (window.innerWidth <= 900) { board.style.removeProperty('--h'); return; }
+        var names = Math.min(Math.max(150, window.innerWidth * 0.15), 230);
+        var byHeight = board.clientHeight - 112;
+        var byWidth = (board.clientWidth - names - 120) / 3.75;
+        var h = Math.floor(Math.max(120, Math.min(byHeight, byWidth)));
+        board.style.setProperty('--h', h + 'px');
+      }
+      size();
+      window.addEventListener('resize', size);
+      window.addEventListener('load', size);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(size);
     })();
   </script>
 </body>
